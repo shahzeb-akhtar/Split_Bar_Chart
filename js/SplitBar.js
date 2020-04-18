@@ -10,6 +10,7 @@ Creates an interactive Bar Chart - if bars are more than 12 and width of chart i
 */
 function SplitBar(configObj){
 	let resizeTimer,
+		mouseTimer,
 		wSvg,
 		hSvg,
 		svgElem,
