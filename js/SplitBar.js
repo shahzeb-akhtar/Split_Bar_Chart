@@ -134,6 +134,9 @@ function SplitBar(configObj){
 				d3.select(this).style("opacity", 0.1).style("font-weight","normal");
 			}
 		});
+		if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+			setTimeout(namesMouseOut, 5000);
+		}
 	}
 	
 	function namesMouseOut(d){
