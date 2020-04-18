@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<title>Rank Comparison Chart</title>
+		<style>
+		</style>
+		<script src="js/d3-v4.js"></script>
+		<script src="data/data.js"></script>
+		<script src="js/SplitBar.js"></script>	
+	</head>
+	<body>
+		<div id="chart" style="width:95%; height:95%"></div>
+		<!--script>
+			// used from server
+			d3.csv("data/data.csv", function(data){
+				console.log(data);
+			});
+		</script-->
+		
+		<script>
+			SplitBar({'divElement': d3.select('#chart'), 
+						'dataArr':data, 
+						'title':"Corona virus cases by country (April 17th, 2020)",
+						'topN':24,
+						'format':"int"
+						});
+		</script>
+	</body>
+</html>
