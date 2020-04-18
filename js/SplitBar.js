@@ -13,6 +13,7 @@ function SplitBar(configObj){
 		wSvg,
 		hSvg,
 		svgElem,
+		isMobile = false,
 		allNames = [],
 		nameValueObj = {},
 		topRank = 1,
@@ -24,7 +25,9 @@ function SplitBar(configObj){
 		topTextElem,
 		splitCase = false,
 		marginPercent = {top:0.01, right:0.00, bottom:0.01, left:0.15};
-		
+	if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		isMobile = true;
+	}	
 	let divElement = configObj.divElement, // required 
 			dataArr = configObj.dataArr, // required 
 			title = 'Rank Comparison Chart', 
@@ -127,6 +130,9 @@ function SplitBar(configObj){
 	}
 	
 	function namesMouseOver(d){
+		if(isMobile && mouseTimer){
+			clearTimeout(mouseTimer);
+		}
 		svgElem.selectAll("g.viz_g").each(function(dIn){
 			if(dIn.name === d.name){
 				d3.select(this).style("opacity", 1).style("font-weight","bold");
@@ -134,8 +140,8 @@ function SplitBar(configObj){
 				d3.select(this).style("opacity", 0.1).style("font-weight","normal");
 			}
 		});
-		if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-			setTimeout(namesMouseOut, 5000);
+		if(isMobile){
+			mouseTimer = setTimeout(namesMouseOut, 2000);
 		}
 	}
 	
