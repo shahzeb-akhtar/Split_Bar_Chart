@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<title>Split Bar Chart</title>
+		<style>
+		</style>
+		<script src="js/d3-v4.js"></script>
+		<script src="data/data_categories.js"></script>
+		<script src="js/SplitBar.js"></script>	
+	</head>
+	<body>
+		<div id="chart" style="width:95%; height:95%"></div>		
+		<script>
+			SplitBar({'divElement': d3.select('#chart'), 
+						'dataArr':data, 
+						'title':"Disaster Response Categories",
+						'topN':36,
+						'format':"int"
+						});
+		</script>
+	</body>
+</html>

@@ -25,7 +25,7 @@ function SplitBar(configObj){
 		maxVal = 0,
 		topTextElem,
 		splitCase = false,
-		marginPercent = {top:0.01, right:0.00, bottom:0.01, left:0.15};
+		marginPercent = {top:0.01, right:0.00, bottom:0.01, left:0.25};
 	if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 		isMobile = true;
 	}	
@@ -98,7 +98,7 @@ function SplitBar(configObj){
 		if(wSvg > hSvg && bottomRank > 12){
 			// split case
 			splitCase = true;
-			scaleX.range([marginPercent.left*wSvg*0.8, (wSvg/2)*(1 -  (marginPercent.right * 0.8))]);
+			scaleX.range([marginPercent.left*wSvg*0.6, (wSvg/2)*(1 -  (marginPercent.right * 0.8))]);
 			scaleY.domain([topRank, Math.ceil(bottomRank/2) + 1]);
 		}else{
 			splitCase = false;
