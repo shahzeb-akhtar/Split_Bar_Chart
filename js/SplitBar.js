@@ -31,7 +31,7 @@ function SplitBar(configObj){
 	}	
 	let divElement = configObj.divElement, // required 
 			dataArr = configObj.dataArr, // required 
-			title = 'Rank Comparison Chart', 
+			title = 'Split Bar Chart', 
 			topN = 30,
 			barColor = d3.schemeCategory10[0],
 			format;
@@ -80,10 +80,14 @@ function SplitBar(configObj){
 		// remove previous chart, if any
 		divElement.selectAll("*").remove();
 		let w = divElement.node().clientWidth,
-			h = divElement.node().clientHeight;
+			h = divElement.node().clientHeight,
+			titleFontSize = h/25;
 		
+		if(titleFontSize > 32){
+			titleFontSize = 32;
+		}
 		// append title
-		let titleElement = divElement.append("h2").style("font-size", (h/25)).text(title);
+		let titleElement = divElement.append("h2").style("font-size", titleFontSize).text(title);
 		
 		// calculate width and height of svg
 		wSvg = w;
@@ -161,6 +165,12 @@ function SplitBar(configObj){
 			rectTextXAdjust, // it would we +/-5
 			rectTextAnchor; // start/end
 		
+		if(fontSize > 24){
+			fontSize = 24;
+		}
+		if(fontSize < 6){
+			fontSize = 6;
+		}
 		svgElem = divElement.append("svg").attr("width", wSvg).attr("height", hSvg);
 		firstG = svgElem.append("g");
 		if(splitCase){
